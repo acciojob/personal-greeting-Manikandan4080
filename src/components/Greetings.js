@@ -2,11 +2,6 @@ import React,{useState, useEffect} from "react";
 
 const Greetings = () => {
     const [userName, setUsername] = useState('');
-    const [greeting, setGreeting] = useState('');
-
-    useEffect(() =>{
-        greet(userName);
-    }, [userName]);
 
     return (
         <div>
@@ -15,17 +10,10 @@ const Greetings = () => {
                 value={userName}
                 onChange={(e)=>setUsername(e.target.value)}>
             </input>
-            <p>{greeting}</p>
+            {
+                userName && <p>{`Hello ${userName}!`}</p>
+            }
         </div>
     );
-
-    function greet(name){
-        if(name){
-            setGreeting(`Hello ${name}!`);
-        }
-        else{
-            setGreeting('');
-        }
-    }
 }
 export default Greetings;
